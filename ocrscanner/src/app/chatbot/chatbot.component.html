@@ -1,0 +1,13 @@
+<div class="chat-container">
+  <div>
+    <label for="userPrompt">You:</label>
+    <input [(ngModel)]="userPrompt" id="userPrompt" placeholder="Type a message..." />
+    <button (click)="generateResponse()">Send</button>
+  </div>
+
+  <div *ngIf="streamedOutput">
+    <label for="aiResponse">Ollama:</label>
+    <!-- Using ngModel to display the response live -->
+    <textarea [(ngModel)]="streamedOutput" id="aiResponse" rows="5" cols="50" readonly></textarea>
+  </div>
+</div>

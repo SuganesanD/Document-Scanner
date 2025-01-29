@@ -1,0 +1,56 @@
+
+<div><div class="container">
+  <h1>{{ title }}</h1>
+
+  <!-- File Input -->
+  <input type="file" #fileInput (change)="onFileChange($event)" accept=".pdf,.docx,.txt,image/*" />
+
+  <!-- Preview Section -->
+  <div *ngIf="pdfSrc || textPages.length || wordPreview || imageSrc" class="preview-section">
+    <div *ngIf="imageSrc" class="image-preview">
+      <img [src]="imageSrc" alt="Image Preview" class="preview-image" />
+    </div>
+
+    <div *ngIf="pdfSrc" class="pdf-preview">
+      <object [data]="pdfSrc" type="application/pdf" class="pdf-object"></object>
+    </div>
+
+    <div *ngIf="wordPreview" class="word-preview">
+      <pre>{{ wordPreview }}</pre>
+    </div>
+
+    <div *ngIf="txtPreview" class="txt-preview">
+      <pre>{{ txtPreview }}</pre>
+    </div>
+
+    <!-- Text Display for PDF, Word, and Text (Simulated Pages) -->
+    <div *ngIf="extractedText" class="text-display">
+      <pre>{{ extractedText }}</pre>
+    </div>
+
+    <!-- Page Navigation for PDF, Word, and Text files -->
+    <div *ngIf="textPages.length || pdfPages.length" class="navigation-buttons">
+      <button (click)="prevPage()" [disabled]="currentPages === 0">Previous</button>
+      <span>Page {{ currentPages + 1 }} of {{ getTotalPages() }}</span>
+      <button (click)="nextPage()" [disabled]="currentPages === getTotalPages() - 1">Next</button>
+    </div>
+  </div>
+
+  <!-- Download Buttons -->
+  <div *ngIf="extractedText" class="download-buttons">
+    <button (click)="downloadPDF()">Download as PDF</button>
+    <button (click)="downloadWord()">Download as Word</button>
+    <button (click)="downloadText()">Download as TXT</button>
+  </div>
+</div>
+    
+    
+    <textarea 
+      [(ngModel)]="extractedText" 
+  
+      
+      rows="20" 
+      cols="100" 
+      placeholder="Edit the extracted text here...">
+    </textarea>
+  </div>

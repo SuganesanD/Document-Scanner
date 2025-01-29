@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Handwritten Text Extraction</h1>
+    <input type="file" (change)="onFileChange($event)" accept="image/*" />
+    
+    <div *ngIf="imageSrc">
+      <h3>Uploaded Image:</h3>
+      <img [src]="imageSrc" alt="Uploaded Image" />
+    </div>
+  
+  
+    <div *ngIf="extractedText">
+      <h3>Extracted Text:</h3>
+     
+  <div>
+    
+    <textarea 
+      [(ngModel)]="extractedText" 
+  
+      
+      rows="20" 
+      cols="100" 
+      placeholder="Edit the extracted text here...">
+    </textarea>
+  </div>

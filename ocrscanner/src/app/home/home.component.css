@@ -1,0 +1,35 @@
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    border: 2px dotted black; /* Dotted border */
+    width: 50%; /* Adjust width as needed */
+    margin: auto;
+  }
+  
+  /* Button styling */
+  .logo-button {
+    display: flex;
+    border: none;
+    background: none;
+    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+    width: 150px; /* Adjust button size as needed */
+  }
+  
+  /* Left logo */
+  .left-logo {
+    width: 50%; /* Half of the button */
+    height: auto;
+    border-right: 1px solid gray; /* Separator */
+  }
+  
+  /* Right logo */
+  .right-logo {
+    width: 50%; /* Half of the button */
+    height: auto;
+  }
+  

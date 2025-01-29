@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@angular/cli": "^17.3.8"
+    "@angular/cli": "^17.3.8",
+    "axios": "^1.7.9"
   }
 }
