@@ -1,0 +1,39 @@
+
+<div class="upload-container">
+  
+  
+    <div class="upload-section">
+      
+      <input type="file" (change)="onFileChange($event)" />
+      <button (click)="addSelectedContent()" [disabled]="!selectedText">Add Selected Content</button>
+    </div>
+  
+    
+    <div class="content-section">
+     
+      <div class="content-display">
+        <div *ngIf="textChunks.length > 0" [innerHTML]="textChunks[currentPage - 1]" (mouseup)="onTextSelect()" (touchend)="onTextSelect()"></div>
+      </div>
+  
+    
+      <div *ngIf="selectedText" class="selected-text-display">
+        <p><strong>Selected Text:</strong></p>
+        <p>{{ selectedText }}</p>
+      </div>
+  
+      <div *ngIf="selectedContents.length > 0" class="added-contents-display">
+        <p><strong>Added Selected Content:</strong></p>
+        <ul>
+          <li *ngFor="let content of selectedContents;let i=index">{{ content }} <img src="/assets/images/delete.png" alt="delete" (click)="removeSelectedContent(i)"></li>
+        </ul>
+      </div>
+  
+    
+      <div class="pagination-controls">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ textChunks.length }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === textChunks.length">Next</button>
+      </div>
+    </div>
+  </div>
+  

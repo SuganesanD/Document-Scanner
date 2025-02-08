@@ -6,9 +6,18 @@ const cors = require('cors');
 const app = express();
 const PORT = 3001;
 
+// ✅ Enable CORS for Angular (http://localhost:4200)
+app.use(cors({
+  origin: 'http://localhost:4200',  // Adjust if Angular runs on a different port
+  methods: 'GET, POST, PUT, DELETE, OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization'
+}));
+
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+
+// ✅ Handle Preflight Requests for CORS
+app.options('*', cors()); 
 
 // Ollama API Streaming Function
 async function queryOllamaModelStream(prompt, modelName = "qwen2.5:0.5b", serverUrl = "http://127.0.0.1:11434") {
@@ -50,19 +59,20 @@ async function queryOllamaModelStream(prompt, modelName = "qwen2.5:0.5b", server
     }
 }
 
-// API Endpoint for Angular
-app.post('/query', async (req, res) => {
+// ✅ API Endpoint for Angular to Fetch Summaries
+app.post('/generate-summary', async (req, res) => {
     const { prompt } = req.body;
 
     try {
-        const response = await queryOllamaModelStream(prompt);
-        res.send(response);
+        const summary = await queryOllamaModelStream(prompt);
+        res.json({ response: summary }); // ✅ Changing 'summary' to 'response'
     } catch (error) {
-        res.status(500).send('Error generating response from Ollama.');
+        console.error("Error generating summary:", error);
+        res.status(500).json({ error: "Error generating response from Ollama" });
     }
 });
 
 // Start Server
 app.listen(PORT, () => {
-    console.log(`Node.js server running at http://localhost:${PORT}`);
+    console.log(`✅ Node.js server running at http://localhost:${PORT}`);
 });

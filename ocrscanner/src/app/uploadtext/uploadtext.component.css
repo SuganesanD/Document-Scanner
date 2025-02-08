@@ -1,0 +1,235 @@
+/* Apply a clean whitesmoke background */
+body {
+    background-color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Overall container for the layout */
+  .upload-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 40px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Upload section (left side) */
+  .upload-section {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* File input field */
+  input[type="file"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="file"]:focus {
+    border-color: #333;
+    outline: none;
+  }
+  
+  /* Cool black buttons */
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #222;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 20px;
+  }
+  
+  button:disabled {
+    background-color: #777;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #000;
+    transform: translateY(-2px);
+  }
+  
+  /* Right section - Display content */
+  .content-section {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Styling for the content display */
+  /* Custom Scrollbar for Content Display */
+.content-display {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: 300px;
+    border-radius: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+  
+    /* Custom scrollbar */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #222 #f5f5f5; /* Thumb & Track */
+  }
+  
+  /* For Webkit Browsers (Chrome, Edge, Safari) */
+  .content-display::-webkit-scrollbar {
+    width: 8px; /* Slim scrollbar */
+  }
+  
+  .content-display::-webkit-scrollbar-track {
+    background: #f5f5f5; /* Light track */
+    border-radius: 10px;
+  }
+  
+  .content-display::-webkit-scrollbar-thumb {
+    background: #222; /* Dark scrollbar */
+    border-radius: 10px;
+    transition: background 0.3s;
+  }
+  
+  .content-display::-webkit-scrollbar-thumb:hover {
+    background: #000; /* Darker on hover */
+  }
+  
+  
+  /* Selected text styling */
+  .selected-text-display {
+    border: 2px solid #000;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    font-style: italic;
+    color: #111;
+    font-weight: bold;
+  }
+  
+  /* Styling for added selected content */
+  .added-contents-display {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #ffffff;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Added content list styling */
+  .added-contents-display ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .added-contents-display li {
+    background-color: #f7f7f7;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .added-contents-display li img{
+    width: 20px;  /* Set a small size */
+    height: 20px;
+    cursor: pointer; /* Show pointer on hover */
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .added-contents-display li img:hover{
+    transform: scale(1.2); /* Slightly enlarge on hover */
+    opacity: 0.8; /* Reduce opacity slightly */
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3)); 
+
+  }
+  
+  .added-contents-display li:hover {
+    background-color: #ececec;
+    cursor: pointer;
+  }
+  
+  /* Pagination controls */
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pagination-controls button {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #222;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .pagination-controls button:disabled {
+    background-color: #777;
+  }
+  
+  .pagination-controls button:hover:not(:disabled) {
+    background-color: #000;
+    transform: translateY(-2px);
+  }
+  
+  .pagination-controls span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  
+
+  @media screen and (max-width: 768px) {
+    .upload-container {
+      flex-direction: column; /* Stack items on smaller screens */
+      gap: 20px;
+      padding: 20px;
+    }
+  
+    .upload-section {
+      width: 100%;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+  
+    .content-section {
+      width: 100%;
+    }
+  
+    .pagination-controls {
+      justify-content: center;
+    }
+  }
+  

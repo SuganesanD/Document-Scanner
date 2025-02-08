@@ -8,7 +8,8 @@
   <!-- Preview Section -->
   <div *ngIf="pdfSrc || textPages.length || wordPreview || imageSrc" class="preview-section">
     <div *ngIf="imageSrc" class="image-preview">
-      <img [src]="imageSrc" alt="Image Preview" class="preview-image" />
+      <img [src]="imageSrc" alt="Image Preview" class="preview-image"
+       />
     </div>
 
     <div *ngIf="pdfSrc" class="pdf-preview">
@@ -54,3 +55,4 @@
       placeholder="Edit the extracted text here...">
     </textarea>
   </div>
+  <button type="button" (click)="sendToChatbot()">Send to Chatbot</button>

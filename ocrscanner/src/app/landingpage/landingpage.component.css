@@ -126,6 +126,11 @@
     color: black;
     font-weight: 900;
   }
+
+  .landingcontainer{
+    height: 100vh;
+
+  }
   
   .main-container{
     height: 90vh;

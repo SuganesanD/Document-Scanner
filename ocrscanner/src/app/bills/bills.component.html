@@ -1,0 +1,88 @@
+<p>bills works!</p>
+<div class="screen">
+  <div class="sidebar"></div>
+  <div class="container">
+    <div class="heading">
+      <h1 style="font-size: 50px;">BILL</h1>
+    </div>
+
+    <!-- Form to add a new document -->
+    <form (ngSubmit)="addDocument()">
+      <div class="form-group">
+        <label for="documentName">DOCUMENT NAME</label>
+        <input
+          type="text"
+          id="documentName"
+          name="documentName"
+          [(ngModel)]="document_name"
+          placeholder="Enter document name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="documentFile">File</label>
+        <input
+          type="file"
+          id="documentFile"
+          (change)="onFileSelected($event)"
+          required
+        />
+      </div>
+
+      <button type="submit">Add Document</button>
+      
+    </form>
+
+    <!-- Title and description for document history -->
+    <div class="title">
+      <h3 style="font-weight: 800;">Order History</h3>
+      <p style="color: gray;">Manage billing information and view receipts</p>
+    </div>
+
+    <!-- Table displaying the documents -->
+    <table>
+      <thead>
+        <tr>
+          <th>S.NO</th>
+          <th>Document Name</th>
+          <th>Date</th>
+          <th>Format</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of getdata; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td (click)="displayContent(document)">{{ document.document_name }}</td>
+          <td>{{ document.date | date }}</td>
+          <td>
+            <select [(ngModel)]="document.selectedFormat">
+              <option value="" disabled>Select format</option>
+              <option value="docx">DOCX</option>
+              <option value="pdf">PDF</option>
+              <option value="txt">TXT</option>
+            </select>
+          </td>
+          <td>
+            <button id="download" (click)="downloadContent(document, document.selectedFormat)">
+              Download 
+            </button>
+          </td>
+          <td>
+            <button id="edit"><img src="\assets\edit.png" alt=""></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Display selected document content -->
+
+<!-- Show the decoded document content -->
+<div *ngIf="selectedDocumentContent" class="displayarea">
+
+  <div *ngIf="selectedDocumentContent !== 'No content available for this document.'">
+    <pre>{{ selectedDocumentContent }}</pre> 
+  </div>
+</div>
+

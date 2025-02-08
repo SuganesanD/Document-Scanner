@@ -1,35 +1,226 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
 
-.centered-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full screen height */
-    border: 2px dotted black; /* Dotted border */
-    width: 50%; /* Adjust width as needed */
-    margin: auto;
-  }
-  
-  /* Button styling */
-  .logo-button {
-    display: flex;
-    border: none;
-    background: none;
-    padding: 10px;
-    cursor: pointer;
-    align-items: center;
-    width: 150px; /* Adjust button size as needed */
-  }
-  
-  /* Left logo */
-  .left-logo {
-    width: 50%; /* Half of the button */
-    height: auto;
-    border-right: 1px solid gray; /* Separator */
-  }
-  
-  /* Right logo */
-  .right-logo {
-    width: 50%; /* Half of the button */
-    height: auto;
-  }
-  
+.box {
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Sidebar */
+.box1 {
+  width: 20%;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* List Styling */
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.menu-list li {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.menu-list li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+.footer {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Middle Section */
+.box2 {
+  width: 50%;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Centered Dashed Box */
+.centered-box {
+  border: 2px dashed white;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: white;
+  color: black;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Feedback Section */
+/* Feedback Container - Full Width */
+.feedback-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+/* Feedback Card - Flex Layout */
+.feedback-card {
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 15px;
+  width: 320px; /* Adjust width as needed */
+  display: flex;
+  align-items: center; /* Align items in a row */
+  gap: 15px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+  text-align: left;
+}
+
+/* Hover effect */
+.feedback-card:hover {
+  width:100%;
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.15);
+  transition: 0.5s;
+}
+
+/* Profile Picture */
+.feedback-profile-pic {
+  width: 60px;
+  height: 60px;
+  background-color: gray;
+  border-radius: 50%;
+  flex-shrink: 0; /* Ensures the profile image does not shrink */
+  position: relative;
+}
+
+/* Status Indicator */
+.feedback-profile-pic::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: green;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  border: 2px solid white;
+}
+
+/* Feedback Content */
+.feedback-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows the content to fill available space */
+}
+
+/* Feedback Text */
+.feedback-content p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  line-height: 1.5;
+  padding-bottom: 5px;
+}
+
+/* Feedback Button */
+.feedback-btn {
+  background: linear-gradient(to right, #ff5733, #ff914d);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 13px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  align-self: flex-start; /* Align button to left */
+}
+
+.feedback-btn:hover {
+  background: linear-gradient(to right, #ff914d, #ff5733);
+  transform: scale(1.05);
+}
+
+
+/* Right Section */
+.box3 {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  box-shadow: whitesmoke;
+}
+
+/* List in Box3 */
+.info-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.info-list li {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Video */
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+video {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+}

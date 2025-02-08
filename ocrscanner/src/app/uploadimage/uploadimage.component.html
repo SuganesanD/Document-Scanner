@@ -1,0 +1,41 @@
+<div class="container">
+  <!-- Left Panel: Upload & Camera Controls -->
+  <div class="left-panel">
+    <h2>Upload & Capture</h2>
+
+    <!-- Upload Image -->
+    <div class="upload-section">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+      <button (click)="initializeCamera()">Start Camera</button>
+      <button (click)="stopCamera()">Stop Camera</button>
+    </div>
+
+    <!-- Camera Section -->
+    <div class="camera-container" *ngIf="stream">
+      <video #videoElement autoplay></video>
+      <button *ngIf="stream" (click)="capturePhoto()">Capture Photo</button>
+    </div>
+  </div>
+
+  <!-- Right Panel: Canvas & Cropping -->
+  <div class="right-panel">
+    <h2>Image Editor</h2>
+
+    <!-- Canvas Section -->
+    <div class="canvas-container">
+      <canvas #imageCanvas (mousedown)="startCrop($event)" (mouseup)="endCrop($event)"></canvas>
+    </div>
+
+    <!-- Cropping Controls -->
+    <div class="crop-controls">
+      <button *ngIf="showCropButton" (click)="cropImage()">Crop</button>
+      <button *ngIf="showOkButton" (click)="confirmCrop()">OK</button>
+    </div>
+
+    <!-- Display Cropped Image -->
+    <div *ngIf="imageSrc" class="cropped-image-preview">
+      <h3>Cropped Image</h3>
+      <img [src]="imageSrc" alt="Cropped Preview" />
+    </div>
+  </div>
+</div>

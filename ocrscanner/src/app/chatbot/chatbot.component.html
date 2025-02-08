@@ -1,13 +1,23 @@
 <div class="chat-container">
-  <div>
-    <label for="userPrompt">You:</label>
-    <input [(ngModel)]="userPrompt" id="userPrompt" placeholder="Type a message..." />
-    <button (click)="generateResponse()">Send</button>
+  <div class="chat-header">
+    <h2>Chat with AI</h2>
+  </div>
+  
+  <div class="chat-box">
+    <div *ngFor="let message of messages;let i=index" class="chat-message">
+      <div  class="user-message">
+          <i class="fa-solid fa-user"></i> {{ messages[i].sender }}
+      </div>
+      <div  class="ai-message">
+          <i class="fa-regular fa-comment-dots"></i> {{messages[i].ai}}
+      </div>
+    </div>
   </div>
 
-  <div *ngIf="streamedOutput">
-    <label for="aiResponse">Ollama:</label>
-    <!-- Using ngModel to display the response live -->
-    <textarea [(ngModel)]="streamedOutput" id="aiResponse" rows="5" cols="50" readonly></textarea>
+  <div class="input-area">
+    <input [(ngModel)]="userPrompt" type="text" placeholder="Type your message..." />
+    <button (click)="generateResponse()">Send</button>
   </div>
 </div>
+
+<input type="text" [(ngModel)]="chattext" />
