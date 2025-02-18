@@ -8,34 +8,25 @@
 </style>
 </head>
 <body>
-    <div class="landingcontainer">
-        <div class="navbar">
-            <ul>
-                <a href="">
-                    <li>HOME</li>
-                </a>
-                <a href="">
-                    <li>TRIAL</li>
-                </a>
-                <a href="">
-                    <li>FEATURES</li>
-                </a>
-                <a href="">
-                    <li>TEAM MEMBERS</li>
-                </a>
-                <a href="">
-                    <li>CONTACT US</li>
-                </a>
-                <a href="">
-                    <button>LOGIN</button>
-                </a>
-            </ul>
-        </div>
-        <div class="textonimg">
-          <h1>hello</h1>
-        </div>
-        <img src="\assets\images\piggy.jpg" alt="">
+  <div class="landingcontainer">
+    <div class="navbar">
+        <ul>
+            <a href=""><li>HOME</li></a>
+            <a href=""><li>TRIAL</li></a>
+            <a href=""><li>FEATURES</li></a>
+            <a href=""><li>TEAM MEMBERS</li></a>
+            <a href=""><li>CONTACT US</li></a>
+            <a  [routerLink]="['login']"><button>LOGIN</button></a>
+        </ul>
     </div>
+    <div class="image-container">
+        <div class="textonimg">
+            <h1>Hello</h1>
+        </div>
+        <img src="/assets/images/piggy.jpg" alt="Piggy Bank">
+    </div>
+</div>
+
   <div class="heading" id="trial">
     <h1>TRIAL</h1>
     <P>Scano provides various services to interact,convert and grow your experience on managing</P>
@@ -44,9 +35,11 @@
   <button [routerLink]="['home']">home</button>
   <button [routerLink]="['chatbot']">chatbot</button>
   <button [routerLink]="['bills']">bill</button>
-  <button [routerLink]="['upload']">upload</button>
-  <button [routerLink]="['uploadtext']">uploadtext</button>
-  <button [routerLink]="['uploadimage']">uploadtext</button>
+  <button [routerLink]="['uploadsample']">uploadsample</button>
+  <button [routerLink]="['uploadfile']">uploadfile</button>
+  <button [routerLink]="['uploadimage']">uploadimage</button>
+  <button [routerLink]="['uploadpdf']">uploadpdf</button>
+  <button [routerLink]="['uploadsample2']">uploadsample2</button>
 <div class="slideshow-container">
   
   <div class="mySlides fade">
@@ -150,10 +143,10 @@
         <p>Email: supportScano.com</p>
         <p>Phone: +123-456-7890</p>
         <div class="social-icons">
-          <a href="https://www.youtube.com/"><img src="D:\Document-Scanner\frontend\src\assets\images\facebook (1).png" alt="Facebook"></a>
-          <a href="#"><img src="D:\Document-Scanner\frontend\src\assets\images\twitter-alt-circle (1).png" alt="Twitter"></a>
-          <a href="#"><img src="D:\Document-Scanner\frontend\src\assets\images\linkedin.png" alt="LinkedIn"></a>
-          <a href="#"><img src="D:\Document-Scanner\frontend\src\assets\images\instagram.png" alt="Instagram"></a>
+          <a href="https://www.youtube.com/"><img src="\assets\images\facebook (1).png" alt="Facebook"></a>
+          <a href="#"><img src="\assets\images\twitter-alt-circle (1).png" alt="Twitter"></a>
+          <a href="#"><img src="\assets\images\linkedin.png" alt="LinkedIn"></a>
+          <a href="#"><img src="\assets\images\instagram.png" alt="Instagram"></a>
         </div>
       </div>
     </div>

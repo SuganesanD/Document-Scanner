@@ -4,6 +4,7 @@ import mammoth from 'mammoth';
 import { saveAs } from 'file-saver';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DocumentdbService } from '../documentdb.service';
 
 
 
@@ -11,12 +12,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   selector: "app-uploadfile",
   templateUrl: "./uploadfile.component.html",
   standalone:true,
+  providers:[DocumentdbService],
   imports:[CommonModule,FormsModule,HttpClientModule],
   styleUrls: ["./uploadfile.component.css"],
 })
 export class UploadfileComponent {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private couch:DocumentdbService) {}
 
   fileContent: string = '';
   currentPage: number = 0;
@@ -28,6 +30,8 @@ export class UploadfileComponent {
   selectedFormat: string = "pdf"; // Default format
   selectedSummaryLevel: string = ""; // Selected summarization level
   summarizedContent: string = "";// Array to store all selected content
+
+  
 
  
 

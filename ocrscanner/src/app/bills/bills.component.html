@@ -7,7 +7,7 @@
     </div>
 
     <!-- Form to add a new document -->
-    <form (ngSubmit)="addDocument()">
+    <form >
       <div class="form-group">
         <label for="documentName">DOCUMENT NAME</label>
         <input
@@ -47,15 +47,18 @@
           <th>S.NO</th>
           <th>Document Name</th>
           <th>Date</th>
-          <th>Format</th>
+          <th>Summarized text</th>
+          <th>format</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let document of getdata; let i = index">
           <td>{{ i + 1 }}</td>
-          <td (click)="displayContent(document)">{{ document.document_name }}</td>
-          <td>{{ document.date | date }}</td>
+          <td (click)="displayContent(document.file)">{{document.document_name }}</td>
+          <td>{{ document.date && document.date !== 'N/A' ? (document.date | date) : (today | date) }}</td>
+          <td>{{document.summarized_text_name}}</td>
+
           <td>
             <select [(ngModel)]="document.selectedFormat">
               <option value="" disabled>Select format</option>
@@ -70,7 +73,7 @@
             </button>
           </td>
           <td>
-            <button id="edit"><img src="\assets\edit.png" alt=""></button>
+            <button id="edit"><img src="/assets/images/edit.png" alt=""></button>
           </td>
         </tr>
       </tbody>

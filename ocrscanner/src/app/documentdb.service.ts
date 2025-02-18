@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DocumentdbService {
-  private readonly baseURL = 'https://192.168.57.185:5984/logindb'; // Ensure this URL is correct
+  private readonly baseURL = 'https://192.168.57.185:5984/scano'; // Ensure this URL is correct
   private readonly userName = 'd_couchdb';
   private readonly password = 'Welcome#2';
 
@@ -31,7 +31,7 @@ export class DocumentdbService {
 
   // Fetch all documents from the database
   get_document(): Observable<any> {
-    const url = `${this.baseURL}/_all_docs?include_docs=true`;
+    const url = `${this.baseURL}/_design/Documents/_view/Documents?include_docs=true`;
     return this.http.get<any>(url, { headers: this.headers }).pipe(
       catchError((error) => {
         console.error('Error in get_document:', error);

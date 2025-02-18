@@ -1,235 +1,305 @@
-/* Apply a clean whitesmoke background */
-body {
-    background-color: #f5f5f5;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Overall container for the layout */
-  .upload-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    padding: 40px;
-    background-color: #f5f5f5;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Upload section (left side) */
-  .upload-section {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* File input field */
-  input[type="file"] {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 12px 16px;
-    font-size: 16px;
-    border: 2px dashed #ddd;
-    border-radius: 8px;
-    transition: border-color 0.3s;
-  }
-  
-  input[type="file"]:focus {
-    border-color: #333;
-    outline: none;
-  }
-  
-  /* Cool black buttons */
-  button {
-    padding: 12px 24px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #222;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    margin-bottom: 20px;
-  }
-  
-  button:disabled {
-    background-color: #777;
-  }
-  
-  button:hover:not(:disabled) {
-    background-color: #000;
-    transform: translateY(-2px);
-  }
-  
-  /* Right section - Display content */
-  .content-section {
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Styling for the content display */
-  /* Custom Scrollbar for Content Display */
+.upload-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Section: Upload + Summary */
+.left-section {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Upload Section */
+.upload-section {
+  padding: 15px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.upload-section input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.upload-section button {
+  width: 100%;
+  padding: 8px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.upload-section button:hover {
+  background: #0056b3;
+}
+
+/* Summary Section */
+.summary-section {
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff3cd;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  font-size: 14px;
+  text-align: center;
+}
+
+.chatsummary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatsummary img {
+  width: 30px;
+  margin-left: 8px;
+}
+
+/* Right Section: Content Display */
+.right-section {
+  flex: 2;
+  min-width: 400px;
+  padding: 15px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Content Display */
 .content-display {
-    border: 1px solid #ddd;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    height: 300px;
-    border-radius: 10px;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #333;
-  
-    /* Custom scrollbar */
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #222 #f5f5f5; /* Thumb & Track */
-  }
-  
-  /* For Webkit Browsers (Chrome, Edge, Safari) */
-  .content-display::-webkit-scrollbar {
-    width: 8px; /* Slim scrollbar */
-  }
-  
-  .content-display::-webkit-scrollbar-track {
-    background: #f5f5f5; /* Light track */
-    border-radius: 10px;
-  }
-  
-  .content-display::-webkit-scrollbar-thumb {
-    background: #222; /* Dark scrollbar */
-    border-radius: 10px;
-    transition: background 0.3s;
-  }
-  
-  .content-display::-webkit-scrollbar-thumb:hover {
-    background: #000; /* Darker on hover */
-  }
-  
-  
-  /* Selected text styling */
-  .selected-text-display {
-    border: 2px solid #000;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    font-style: italic;
-    color: #111;
-    font-weight: bold;
-  }
-  
-  /* Styling for added selected content */
-  .added-contents-display {
-    border: 1px solid #ddd;
-    padding: 20px;
-    background-color: #ffffff;
-    max-height: 200px;
-    overflow-y: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Added content list styling */
-  .added-contents-display ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .added-contents-display li {
-    background-color: #f7f7f7;
-    padding: 12px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-    font-size: 14px;
-    color: #333;
-    display: flex;
-    justify-content: space-between;
-  }
+  min-height: 200px;
+  border: 1px solid #ddd;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
 
-  .added-contents-display li img{
-    width: 20px;  /* Set a small size */
-    height: 20px;
-    cursor: pointer; /* Show pointer on hover */
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
+.content-display:hover {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
 
-  .added-contents-display li img:hover{
-    transform: scale(1.2); /* Slightly enlarge on hover */
-    opacity: 0.8; /* Reduce opacity slightly */
-    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3)); 
+/* Selected Text */
+.selected-text-display {
+  background: #e6f7ff;
+  padding: 12px;
+  border-left: 4px solid #007bff;
+  border-radius: 8px;
+  margin-top: 10px;
+}
 
-  }
-  
-  .added-contents-display li:hover {
-    background-color: #ececec;
-    cursor: pointer;
-  }
-  
-  /* Pagination controls */
-  .pagination-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .pagination-controls button {
-    padding: 12px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #222;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .pagination-controls button:disabled {
-    background-color: #777;
-  }
-  
-  .pagination-controls button:hover:not(:disabled) {
-    background-color: #000;
-    transform: translateY(-2px);
-  }
-  
-  .pagination-controls span {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  
+/* Added Content */
+.added-contents-display {
+  margin-top: 15px;
+  padding: 12px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
 
-  @media screen and (max-width: 768px) {
-    .upload-container {
-      flex-direction: column; /* Stack items on smaller screens */
-      gap: 20px;
-      padding: 20px;
-    }
-  
-    .upload-section {
-      width: 100%;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-  
-    .content-section {
-      width: 100%;
-    }
-  
-    .pagination-controls {
-      justify-content: center;
-    }
-  }
-  
+.downloadcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.custom-select {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Pagination Controls Below Display */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background: #0056b3;
+}
+
+.pagination-controls button:disabled {
+  background: #aaa;
+}
+
+/* Selected Content List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+ul li img {
+  width: 16px;
+  cursor: pointer;
+}
+
+/* General Button Styling */
+button {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+
+/* Primary Button Style */
+button#downloadbutton {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+button#downloadbutton:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+/* Send to Chat Button */
+button#sendtochatbutton {
+  background: linear-gradient(135deg, #28a745, #1d8232);
+  color: white;
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+}
+
+
+button#sendtochatbutton:hover {
+  background: linear-gradient(135deg, #1d8232, #166527);
+}
+
+/* Pagination Buttons */
+.pagination-controls button {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: white;
+  font-weight: 500;
+  padding: 8px 14px;
+  box-shadow: 0 4px 6px rgba(108, 117, 125, 0.2);
+}
+
+.pagination-controls button:hover {
+  background: linear-gradient(135deg, #495057, #343a40);
+}
+
+.pagination-controls button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Styled Select Dropdown */
+.custom-select {
+  appearance: none;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 2px solid #007bff;
+  background: white url('/assets/images/dropdown-icon.png') no-repeat right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.summary-section {
+  position: relative;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.summary-section h3{
+  padding: 10px;
+}
+
+.download-controls {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#downloadbutton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+#downloadbutton:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.custom-select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.imagecontent{
+  width: 100%;
+  height: auto;
+}
+
+.imagecontent img{
+  width: 100%;
+}
+
+
+/* Select Focus & Hover */
+.custom-select:hover, 
+.custom-select:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 91, 187, 0.3);
+}
+

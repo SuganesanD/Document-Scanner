@@ -1,0 +1,38 @@
+.pdf-container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f8f8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .pdf-container {
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f8f8;
+  }
+  
+  canvas {
+    cursor: crosshair;
+    border: 2px solid #333;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  

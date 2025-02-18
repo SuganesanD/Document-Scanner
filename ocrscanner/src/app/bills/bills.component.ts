@@ -4,6 +4,7 @@ import FileSaver from 'file-saver';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { dateTimeValue } from 'docx';
 @Component({
   selector: 'app-bills',
   standalone: true,
@@ -14,12 +15,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class BillsComponent {
   document_name: string = '';
+  email:string='balaji@gmail.com';
+  
+  
+  
   selectedFile: File | null = null;
   
   getdata: any[] = [];
   selectedDocumentContent: string | null = null;
+  today=new Date;
 
-  constructor(private data: DocumentdbService) {}
+  constructor(private data: DocumentdbService,) {}
 
   ngOnInit(): void {
     this.getDocuments(); // Fetch data on initialization
@@ -33,54 +39,26 @@ export class BillsComponent {
   }
 
   // Add document to the database (PDF, DOCX, TXT)
-  addDocument(): void {
-    if (!this.document_name.trim() || !this.selectedFile) {
-      alert('Please enter a document name and select a file.');
-      return;
-    }
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const base64File = reader.result as string; // Convert file to base64 format
-      const document_data = {
-        document_namedb: this.document_name.trim(),
-        type: 'document_data',
-        date: new Date().toISOString(),
-        file: {
-          name: this.selectedFile?.name,
-          type: this.selectedFile?.type,
-          content: base64File // Base64 content
-        }
-      };
-
-      this.data.add_document(document_data).subscribe({
-        next: () => {
-          alert('Document added successfully.');
-          this.document_name = '';
-          this.selectedFile = null;
-          this.getDocuments(); // Refresh document list
-        },
-        error: (error) => {
-          console.error('Error adding document:', error);
-          alert('An error occurred while adding the document.');
-        }
-      });
-    };
-
-    reader.readAsDataURL(this.selectedFile); // This converts file to base64
-  }
 
   // Fetch all documents
   getDocuments(): void {
     this.data.get_document().subscribe({
       next: (response: any) => {
         if (response && response.rows) {
+          console.log(response);
           this.getdata = response.rows.map((row: any, index: number) => ({
             index: index + 1,
-            document_name: row.doc.document_namedb || 'Unknown',
-            date: row.doc.date || 'N/A',
-            file: row.doc.file || null
-          }));
+            document_name: row.doc.fileName || 'Unknown',
+            summarized_text_name:row.doc.summarizedFileName,  
+            date: row.doc.uploadDate || 'N/A',
+            file: row.doc.originalFileContent || null
+          }
+          
+          
+          
+        ));
+        console.log(this.getdata);
         } else {
           this.getdata = [];
         }
@@ -93,13 +71,18 @@ export class BillsComponent {
   }
   // Retrieve and display the content
 displayContent(document: any): void {
+  console.log("inside the display")
+  console.log(document);
+  
   if (!document.file || !document.file.content) {
     this.selectedDocumentContent = 'No content available for this document.';
     return;
   }
 
   try {
-    const base64Content = document.file.content.split(',')[1]; // Remove the base64 prefix
+    console.log("inside the try");
+    
+    const base64Content = document.split(',')[1]; // Remove the base64 prefix
     const fileType = document.file.type;
 
     if (fileType.startsWith('application/pdf')) {
